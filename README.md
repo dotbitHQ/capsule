@@ -1,6 +1,12 @@
 # Capsule
 
-![Capsule](./capsule.jpg)
+## 注意事项
+
+> 这是为部署 ckb-time-script 而修改过的 capsule ，用于其他项目前请自行验证可用性。
+
+> 通过在 deploy 命令前加上 `RUST_LOG=ckb_capsule::deployment=trace` 可以打印调试信息。
+
+## 以下是原文
 
 > Capsule is still under active development and considered to be a work in progress.
 

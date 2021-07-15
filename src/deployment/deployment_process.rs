@@ -87,6 +87,7 @@ impl DeploymentProcess {
             );
             self.wallet
                 .lock_out_points(inputs_cells.iter().map(|c| c.out_point()));
+            // println!("Found input cell: {:?}", input_cells);
         }
         // build outputs
         let output = {
@@ -217,14 +218,14 @@ impl DeploymentProcess {
                 input_cells.push(input_cell);
             }
             // search change cells from previous tx
-            if let Some(tx) = txs.last() {
-                let change_outputs = self.search_changes(tx);
-                trace!(
-                    "found change outputs from previous tx: {:?}",
-                    change_outputs
-                );
-                input_cells.extend(change_outputs);
-            }
+            // if let Some(tx) = txs.last() {
+            //     let change_outputs = self.search_changes(tx);
+            //     trace!(
+            //         "found change outputs from previous tx: {:?}",
+            //         change_outputs
+            //     );
+            //     input_cells.extend(change_outputs);
+            // }
             let tx = self
                 .build_cell_tx(cell.clone(), data, input_cells)
                 .expect("cell deployment tx");
