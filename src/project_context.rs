@@ -42,7 +42,7 @@ pub struct BuildConfig {
 pub enum DeployEnv {
     Dev,
     Testnet,
-    Production,
+    Mainnet,
 }
 
 impl FromStr for DeployEnv {
@@ -52,7 +52,7 @@ impl FromStr for DeployEnv {
         match s.to_lowercase().as_str() {
             "dev" => Ok(DeployEnv::Dev),
             "testnet" => Ok(DeployEnv::Testnet),
-            "production" => Ok(DeployEnv::Production),
+            "mainnet" => Ok(DeployEnv::Mainnet),
             _ => Err("no match"),
         }
     }
@@ -135,7 +135,7 @@ impl Context {
         let mut path = self.project_path.clone();
         path.push(MIGRATIONS_DIR);
         let prefix = match env {
-            DeployEnv::Production => "production",
+            DeployEnv::Mainnet => "production",
             DeployEnv::Testnet => "testnet",
             DeployEnv::Dev => "dev",
         };

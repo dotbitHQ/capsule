@@ -109,7 +109,7 @@ fn run_cli() -> Result<()> {
                         "Per transaction's fee, deployment may involve more than one transaction.",
                     ).default_value("0.0001").takes_value(true),
                     Arg::with_name("env").long("env").help("Deployment environment.")
-                    .possible_values(&["dev", "testnet", "production"]).default_value("dev").takes_value(true),
+                    .possible_values(&["dev", "testnet", "mainnet"]).default_value("dev").takes_value(true),
                     Arg::with_name("migrate")
                         .long("migrate")
                         .help("Use previously deployed cells as inputs.").possible_values(&["on", "off"]).default_value("on").takes_value(true),
