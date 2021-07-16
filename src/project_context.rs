@@ -41,6 +41,7 @@ pub struct BuildConfig {
 #[derive(Debug, Copy, Clone)]
 pub enum DeployEnv {
     Dev,
+    Testnet,
     Production,
 }
 
@@ -50,6 +51,7 @@ impl FromStr for DeployEnv {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s.to_lowercase().as_str() {
             "dev" => Ok(DeployEnv::Dev),
+            "testnet" => Ok(DeployEnv::Testnet),
             "production" => Ok(DeployEnv::Production),
             _ => Err("no match"),
         }
@@ -134,6 +136,7 @@ impl Context {
         path.push(MIGRATIONS_DIR);
         let prefix = match env {
             DeployEnv::Production => "production",
+            DeployEnv::Testnet => "testnet",
             DeployEnv::Dev => "dev",
         };
         path.push(prefix);
