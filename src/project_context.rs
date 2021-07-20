@@ -135,7 +135,7 @@ impl Context {
         let mut path = self.project_path.clone();
         path.push(MIGRATIONS_DIR);
         let prefix = match env {
-            DeployEnv::Mainnet => "production",
+            DeployEnv::Mainnet => "mainnet",
             DeployEnv::Testnet => "testnet",
             DeployEnv::Dev => "dev",
         };
